@@ -1,5 +1,5 @@
 # One Reference Is Not Enough: Diverse Distillation with Reference Selection for Non-Autoregressive Translation
-This repository contains the source code for our NAACL 2022 main conference paper One Reference Is Not Enough: Diverse Distillation with Reference Selection for Non-Autoregressive Translation [pdf](todo). This code is implemented based on the open-source toolkit [fairseq-0.10.2](https://github.com/pytorch/fairseq).
+This repository contains the source code for our NAACL 2022 main conference paper One Reference Is Not Enough: Diverse Distillation with Reference Selection for Non-Autoregressive Translation [pdf](https://arxiv.org/pdf/2205.14333.pdf). This code is implemented based on the open-source toolkit [fairseq-0.10.2](https://github.com/pytorch/fairseq).
 
 # Requirements
 This system has been tested in the following environment.
@@ -8,7 +8,7 @@ This system has been tested in the following environment.
 + Pytorch version = 1.7
 
 # Diverse Distillation
-Perform diverse distillation to obtain a dataset containing multiple references. You can follow the instructions below to prepare the diverse distillation dataset for WMT14 En-De. Or you can directly download [our diverse distillation dataset](todo).
+Perform diverse distillation to obtain a dataset containing multiple references. You can follow the instructions below to prepare the diverse distillation dataset for WMT14 En-De. Or you can directly download [our diverse distillation dataset](todo) and jump to step 4.
 
 **Step 1**: Follow instruction from [Fairseq](https://github.com/pytorch/fairseq/tree/master/examples/translation) to prepare and preprocess the WMT14 En-De dataset, or download the preprocessed dataset [here](http://dl.fbaipublicfiles.com/nat/original_dataset.zip). Save the raw data to ``data/wmt_ende`` (train.en-de.{en,de}, valid.en-de.{en,de}, test.en-de.{en,de}). Save the processed data to ``data-bin/wmt14_ende_raw``.
 
