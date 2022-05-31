@@ -31,7 +31,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python train.py $data_dir \
 sh tools/average.sh $save_dir$seed
 done
 ```
-**Step 3**: use each model to decode the training set, obtain three decoding results pred.1, pred.2, pred.3.
+**Step 3**: Use each model to decode the training set, obtain three decoding results pred.1, pred.2, pred.3.
 ```bash
 data_dir=data-bin/wmt14_ende_raw
 save_dir=output/wmt14_ende_at
@@ -86,7 +86,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python train.py $data_dir \
     --max-update 300000 --keep-interval-updates 5 --keep-last-epochs 5
 sh tools/average.sh $save_dir
 ```
-**Step 2**: finetune the CTC model with max-reward reinforcement learning.
+**Step 2**: Finetune the CTC model with max-reward reinforcement learning.
 ```bash
 data_dir=data-bin/wmt14_ende_divdis
 save_dir=output/wmt14ende_disdiv
