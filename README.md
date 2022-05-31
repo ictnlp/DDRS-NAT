@@ -8,7 +8,7 @@ This system has been tested in the following environment.
 + Pytorch version = 1.7
 
 # Diverse Distillation
-Perform diverse distillation to obtain a dataset containing multiple references. You can follow the instructions below to prepare the diverse distillation dataset for WMT14 En-De. Or you can directly download [our diverse distillation dataset](todo) and jump to step 4.
+Perform diverse distillation to obtain a dataset containing multiple references. You can follow the instructions below to prepare the diverse distillation dataset for WMT14 En-De. Or you can directly download [our diverse distillation dataset](https://drive.google.com/file/d/1-A0fufa8m7aNaCgspBtakJaRgOCcoIMt/view?usp=sharing) and jump to step 4.
 
 **Step 1**: Follow instruction from [Fairseq](https://github.com/pytorch/fairseq/tree/master/examples/translation) to prepare and preprocess the WMT14 En-De dataset, or download the preprocessed dataset [here](http://dl.fbaipublicfiles.com/nat/original_dataset.zip). Save the raw data to ``data/wmt_ende`` (train.en-de.{en,de}, valid.en-de.{en,de}, test.en-de.{en,de}). Save the processed data to ``data-bin/wmt14_ende_raw``.
 
