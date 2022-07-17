@@ -129,7 +129,7 @@ CUDA_VISIBLE_DEVICES=0 python generate.py $data_dir \
 grep ^H out | cut -f1,3- | cut -c3- | sort -k1n | cut -f2- > pred.raw
 python tools/dedup.py
 python tools/deblank.py
-sed -r 's/(@@ )|(@@ ?$)//g' pred.de.deblank > pred.de
+sed -r 's/(@@ )|(@@ ?$)//g' pred.deblank > pred.de
 perl tools/multi-bleu.perl ref.de < pred.de
 ```
 **Step 2**: We can also apply beam search decoding combined with a 4-gram language model to search the target sentence. First, install the ctcdecode package.
