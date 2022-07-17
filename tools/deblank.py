@@ -1,5 +1,5 @@
-f=open("pred.de.dedup",encoding='utf-8').readlines()
-o=open("pred.de.deblank","w",encoding='utf-8')
+f=open("pred.dedup",encoding='utf-8').readlines()
+o=open("pred.deblank","w",encoding='utf-8')
 for line in f:
     words=line[:-1].split(' ')
     l = len(words)
