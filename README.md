@@ -86,7 +86,34 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python train.py $data_dir \
     --max-update 300000 --keep-interval-updates 5 --keep-last-epochs 5
 sh tools/average.sh $save_dir
 ```
-**Step 2**: Finetune the CTC model with max-reward reinforcement learning.
+**Step 2**: Finetune the CTC model with the max-reward reinforcement learning or the newly proposed [NMLA](https://github.com/ictnlp/NMLA-NAT) training objective. In practice, we find NMLA performs much better than max-reward reinforcement learning.
+
+Finetune with NMLA:
+```bash
+data_dir=data-bin/wmt14_ende_divdis
+save_dir=output/wmt14ende_disdiv
+cp $save_dir/average-model.pt ${save_dir}tune/checkpoint_last.pt
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python train.py $data_dir \
+    --tune --use-ngram --reset-optimizer --num-references 3 --ctc-ratio 3 --src-embedding-copy --fp16 --ddp-backend=no_c10d --save-dir ${save_dir} \
+    --task translation_lev \
+    --criterion ddrs_loss \
+    --arch nonautoregressive_transformer \
+    --noise full_mask \
+    --optimizer adam --adam-betas '(0.9,0.98)'  \
+    --lr 0.0003 --lr-scheduler inverse_sqrt \
+    --min-lr '1e-09' --warmup-updates 500 \
+    --warmup-init-lr '1e-07'  --activation-fn gelu \
+    --dropout 0.1 --weight-decay 0.01 \
+    --decoder-learned-pos \
+    --encoder-learned-pos \
+    --pred-length-offset \
+    --apply-bert-init \
+    --log-format 'simple' --log-interval 1 \
+    --max-tokens 2048 --update-freq 16\
+    --save-interval-updates 500 \
+    --max-update 6000 --keep-interval-updates 5 --keep-last-epochs 5
+```
+Finetune with max-reward reinforcement learning:
 ```bash
 data_dir=data-bin/wmt14_ende_divdis
 save_dir=output/wmt14ende_disdiv
