@@ -92,6 +92,7 @@ Finetune with NMLA:
 ```bash
 data_dir=data-bin/wmt14_ende_divdis
 save_dir=output/wmt14ende_disdiv
+mkdir ${save_dir}tune
 cp $save_dir/average-model.pt ${save_dir}tune/checkpoint_last.pt
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python train.py $data_dir \
     --tune --use-ngram --reset-optimizer --num-references 3 --ctc-ratio 3 --src-embedding-copy --fp16 --ddp-backend=no_c10d --save-dir ${save_dir} \
@@ -117,6 +118,7 @@ Finetune with max-reward reinforcement learning:
 ```bash
 data_dir=data-bin/wmt14_ende_divdis
 save_dir=output/wmt14ende_disdiv
+mkdir ${save_dir}tune
 cp $save_dir/average-model.pt ${save_dir}tune/checkpoint_last.pt
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python train.py $data_dir \
     --tune --reset-optimizer --num-references 3 --ctc-ratio 3 --src-embedding-copy --fp16 --ddp-backend=no_c10d --save-dir ${save_dir}tune \
